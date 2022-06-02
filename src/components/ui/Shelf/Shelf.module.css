@@ -1,0 +1,30 @@
+.shelf {
+  width: 100%;
+  position: relative;
+  height: 12px;
+  border: 3px solid #3B3E40;
+  border-radius: 4px;
+  background-color: #E0B289;
+}
+
+.shelf::before,
+.shelf::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 90%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #6B6C6C;
+  border: 3px solid #3B3E40;
+  z-index: -1;
+}
+
+.shelf::before {
+  left: 20px;
+}
+
+.shelf::after {
+  right: 20px;
+}

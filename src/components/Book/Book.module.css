@@ -1,0 +1,153 @@
+.book {
+  width: 100%;
+  margin-bottom: 34px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.book-img {
+  position: absolute;
+  bottom: 14px;
+  left: 20px;
+  display: block;
+  padding-right: 30px;
+  list-style: none;
+  box-sizing: border-box;
+  transition: all 0.25s;
+}
+
+.book-wrapper {
+  position: relative;
+  width: 150px;
+  height: 200px;
+  float: left;
+  z-index: 1;
+  perspective: 1400px;
+}
+
+.book-wrapper:last-child {
+  margin-right: 0;
+}
+
+.book-book {
+  position: absolute;
+  width: 150%;
+  height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.book-book > div,
+.book-front > div {
+  display: block;
+  position: absolute;
+}
+
+.book-front {
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+  transition: transform 0.5s;
+  transform: translate3d(0, 0, 20px);
+  z-index: 10;
+}
+
+.book-front > div {
+  z-index: 1;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border-radius: 0 3px 3px 0;
+  box-shadow: inset 4px 0 10px rgb(0 0 0 / 10%);
+}
+
+.book-front::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: -1px;
+  width: 1px;
+}
+
+.book-front,
+.book-back,
+.book-front > div {
+  width: 150px;
+  height: 200px;
+}
+
+.book-left,
+.book-right {
+  width: 40px;
+  left: -20px;
+}
+
+.book-back {
+  transform: rotate3d(0, 1, 0, -180deg) translate3d(0, 0, 20px);
+  box-shadow: 5px 7px 15px rgb(0 0 0 / 30%);
+  border-radius: 3px 0 0 3px;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.book-back::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  width: 3px;
+  background: rgb(0 0 0 / 6%);
+  box-shadow: 1px 0 3px rgba(255 255 255 / 10%);
+}
+
+.book-left {
+  height: 200px;
+  transform: rotate3d(0, 1, 0, -90deg);
+}
+
+.book-cover {
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+}
+
+.book-cover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  width: 3px;
+  background: rgba(0 0 0 / 6%);
+  box-shadow: 1px 0 3px rgba(255 255 255 / 10%);
+}
+
+.book-front > div,
+.book-left {
+  background-color: var(--color-blue);
+}
+
+.book:hover .book-book {
+  transform: rotate3d(0, 1, 0, 25deg);
+}
+
+.book:hover .book-back {
+  opacity: 1;
+}
+
+.info {
+  width: calc(100% - 80px);
+  margin-left: auto;
+  padding: 20px;
+  padding-left: 120px;
+  border-radius: 15px;
+  transition: background-color 0.4s;
+  overflow: hidden;
+}
+
+.book:hover .info {
+  background-color: var(--color-white);
+}
